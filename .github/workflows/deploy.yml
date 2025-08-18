@@ -56,7 +56,7 @@ jobs:
       
       - name: Build Docker image
         run: |
-          docker build -t magley/push-test:${{ env.VERSION }} .
+          docker build -t magley/push-test:${{ env.VERSION }} ./app
 
       - name: Push Docker image
         run: |

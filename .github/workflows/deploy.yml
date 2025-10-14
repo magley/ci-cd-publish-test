@@ -37,6 +37,8 @@ jobs:
         uses: aevea/action-kaniko@master
         with:
           image: magley/push-test
+          path: ./app/
+          build_file: Dockerfile
           tag: ${{ env.VERSION }}
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}

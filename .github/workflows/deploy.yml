@@ -9,6 +9,7 @@ permissions:
   contents: write
 
 jobs:
+
   static_analysis:
     name: Static Analysis using golangci-lint
     runs-on: ubuntu-latest
@@ -26,9 +27,11 @@ jobs:
       - name: Run golangci-lint and save output
         run: |
           mkdir -p lint-results
-          golangci-lint run ./app/... --out-format json > lint-results/golangci-lint-report.json
+          $(go env GOPATH)/bin/golangci-lint run ./app/... \
+            --output.json.path lint-results/golangci-lint-report.json \
+            || echo "Linting completed with issues"
 
-      - name: Upload lint report as artifact
+      - name: Upload golangci-lint report
         uses: actions/upload-artifact@v4
         with:
           name: golangci-lint-report

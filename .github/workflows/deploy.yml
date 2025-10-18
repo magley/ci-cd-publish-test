@@ -9,6 +9,18 @@ permissions:
   contents: write
 
 jobs:
+  static_analysis:
+    name: Static Analysis using golangci-lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-go@v6
+        with:
+          go-version: stable
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v8
+        with:
+          version: v2.1
   push_to_registry:
     name: Push Docker Compose to Docker Hub
     runs-on: ubuntu-latest
@@ -17,11 +29,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-        
-      - name: Staticcheck
-        uses: dominikh/staticcheck-action@v1
-        with:
-          version: "latest"
 
       - name: Generate Semantic Version
         id: version

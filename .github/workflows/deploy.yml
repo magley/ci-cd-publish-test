@@ -20,7 +20,7 @@ jobs:
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v8
         with:
-          version: v2.1
+          version: latest
   push_to_registry:
     name: Push Docker Compose to Docker Hub
     runs-on: ubuntu-latest

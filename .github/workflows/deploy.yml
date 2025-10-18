@@ -23,13 +23,6 @@ jobs:
         with:
           working-directory: ./app/
           version: latest
-          output-file: "staticcheck-report.txt"
-
-      - name: Upload Staticcheck report
-        uses: actions/upload-artifact@v4
-        with:
-          name: staticcheck-report
-          path: staticcheck-report.txt
 
 
   push_to_registry:

@@ -18,18 +18,10 @@ jobs:
         with:
           fetch-depth: 0
         
-      - name: Static analysis
-        uses: dominikh/staticcheck-action@v1.4.0
-        continue-on-error: true
+      - name: Staticcheck
+        uses: dominikh/staticcheck-action@v1
         with:
-          version: "2025.1.1"
-          output-file: "staticcheck-report.txt"
-
-      - name: Upload Staticcheck report
-        uses: actions/upload-artifact@v4
-        with:
-          name: staticcheck-report
-          path: staticcheck-report.txt
+          version: "latest"
 
       - name: Generate Semantic Version
         id: version

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"os"
 
@@ -9,6 +10,7 @@ import (
 )
 
 func main() {
+	givesError()
 
 	e := echo.New()
 
@@ -38,4 +40,8 @@ func IntMin(a, b int) int {
 		return a
 	}
 	return b
+}
+
+func givesError() error {
+	return fmt.Errorf("Abc")
 }
